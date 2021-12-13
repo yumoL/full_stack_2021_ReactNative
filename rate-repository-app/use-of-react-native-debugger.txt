@@ -1,0 +1,4 @@
+open react native debugger
+Ctrl+T to open a new debuger window and set port=19000
+start the Android simulator and Crtl+M to open the developer menu
+choose Debug remote JS to connect to the debugger
