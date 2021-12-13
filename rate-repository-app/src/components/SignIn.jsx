@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, Pressable, StyleSheet } from 'react-native'
+import { View, Pressable, StyleSheet } from 'react-native';
 import { Formik } from 'formik';
-import * as yup from 'yup'
+import * as yup from 'yup';
 import FormikTextInput from './FormikTextInput';
 import Text from './Text';
 
@@ -17,7 +17,7 @@ const SignInForm = ({ onSubmit }) => {
     submitButtonText: {
       color: 'white'
     }
-  })
+  });
   return (
     <View>
       <FormikTextInput name="username" placeholder="username" />

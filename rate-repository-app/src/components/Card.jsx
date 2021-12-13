@@ -112,7 +112,7 @@ const dividerStyles = StyleSheet.create({
     height: 10,
     backgroundColor: 'gray'
   }
-})
+});
 
 const Card = ({ fullName, description, language, ownerAvatarUrl, stargazersCount, forksCount, reviewCount, ratingAverage }) => {
   return (
