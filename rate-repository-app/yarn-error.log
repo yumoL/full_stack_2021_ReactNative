@@ -1,0 +1,72 @@
+Arguments: 
+  /snap/node/5638/bin/node /snap/node/5638/bin/yarn.js global dir
+
+PATH: 
+  /home/luoyumo/google-cloud-sdk/bin:/home/luoyumo/anaconda3/bin:/home/luoyumo/anaconda3/condabin:/home/luoyumo/.gvm/bin:/home/luoyumo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/luoyumo/.linkerd2/bin:/usr/local/go/bin:/home/luoyumo/go/bin:/usr/local/kubebuilder/bin:/snap/bin/node:/home/luoyumo/bin:/home/luoyumo/local/bin:~/.npm_packages/bin:/home/luoyumo/Android/Sdk/platform-tools
+
+Yarn version: 
+  1.22.15
+
+Node version: 
+  14.18.2
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: EACCES: permission denied, write
+      at writeSync (fs.js:736:3)
+      at SyncWriteStream._write (internal/fs/sync_write_stream.js:24:3)
+      at writeOrBuffer (internal/streams/writable.js:358:12)
+      at SyncWriteStream.Writable.write (internal/streams/writable.js:303:10)
+      at ConsoleReporter._log (/snap/node/5638/lib/cli.js:96906:17)
+      at ConsoleReporter.log (/snap/node/5638/lib/cli.js:96894:10)
+      at dir (/snap/node/5638/lib/cli.js:36299:14)
+      at Object.<anonymous> (/snap/node/5638/lib/cli.js:25983:25)
+      at Generator.next (<anonymous>)
+      at step (/snap/node/5638/lib/cli.js:310:30)
+
+npm manifest: 
+  {
+    "name": "rate-repository-app",
+    "version": "1.0.0",
+    "main": "node_modules/expo/AppEntry.js",
+    "scripts": {
+      "start": "expo start",
+      "android": "expo start --android",
+      "ios": "expo start --ios",
+      "web": "expo start --web",
+      "eject": "expo eject",
+      "lint": "eslint ./src/**/*.{js,jsx} App.js --no-error-on-unmatched-pattern"
+    },
+    "dependencies": {
+      "@apollo/client": "^3.3.20",
+      "dotenv": "^10.0.0",
+      "expo": "~42.0.1",
+      "expo-cli": "^4.13.0",
+      "expo-status-bar": "~1.0.4",
+      "formik": "^2.2.9",
+      "graphql": "^14.6.0",
+      "react": "16.13.1",
+      "react-dom": "16.13.1",
+      "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
+      "react-native-web": "~0.13.12",
+      "react-router-native": "^5.2.1",
+      "yup": "^0.32.11",
+      "@react-native-async-storage/async-storage": "~1.15.0"
+    },
+    "devDependencies": {
+      "@babel/core": "^7.9.0",
+      "@babel/eslint-parser": "^7.16.3",
+      "@expo/webpack-config": "^0.16.12",
+      "eslint": "^8.3.0",
+      "eslint-plugin-react": "^7.27.1"
+    },
+    "private": true
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
