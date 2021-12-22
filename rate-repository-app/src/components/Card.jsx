@@ -107,12 +107,12 @@ const cardStyles = StyleSheet.create({
   }
 });
 
-const dividerStyles = StyleSheet.create({
-  container: {
-    height: 10,
-    backgroundColor: 'gray'
-  }
-});
+// const dividerStyles = StyleSheet.create({
+//   container: {
+//     height: 10,
+//     backgroundColor: 'gray'
+//   }
+// });
 
 const Card = ({ fullName, description, language, ownerAvatarUrl, stargazersCount, forksCount, reviewCount, ratingAverage }) => {
   return (
@@ -120,8 +120,6 @@ const Card = ({ fullName, description, language, ownerAvatarUrl, stargazersCount
       <View style={cardStyles.container}>
       <CardHeader fullName={fullName} description={description} language={language} ownerAvatarUrl={ownerAvatarUrl} />
       <CardFooter stargazersCount={stargazersCount} forksCount={forksCount} reviewCount={reviewCount} ratingAverage={ratingAverage} />
-      </View>
-      <View style={dividerStyles.container}>
       </View>
     </View>
     

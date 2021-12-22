@@ -18,33 +18,36 @@ export const RepositoryListContainer = ({ repositories }) => {
     ? repositories.edges.map(edge => edge.node)
     : [];
 
-  const renderItem = ({ item }) => (
-    <RepositoryItem 
-      fullName={item.fullName}
-      description={item.description}
-      language={item.language}
-      stargazersCount={item.stargazersCount}
-      forksCount={item.forksCount}
-      reviewCount={item.reviewCount}
-      ratingAverage={item.ratingAverage}  
-      ownerAvatarUrl={item.ownerAvatarUrl}
-    />
-  );
+  const renderItem = ({ item }) => {
+    return (
+      <RepositoryItem
+        id={item.id}
+        fullName={item.fullName}
+        description={item.description}
+        language={item.language}
+        stargazersCount={item.stargazersCount}
+        forksCount={item.forksCount}
+        reviewCount={item.reviewCount}
+        ratingAverage={item.ratingAverage}
+        ownerAvatarUrl={item.ownerAvatarUrl}
+      />
+    );
+  };
 
   return (
     <FlatList
       data={repositoryNodes}
       ItemSeparatorComponent={ItemSeparator}
       renderItem={renderItem}
-      keyExtractor={item=>item.fullName}
+      keyExtractor={item => item.fullName}
     // other props
     />
   );
 };
 
 const RepositoryList = () => {
-  const { repositories } = useRepositories();
-
+  const { repositories, loading } = useRepositories();
+  if (loading) return null;
   return <RepositoryListContainer repositories={repositories} />;
 };
 

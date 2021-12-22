@@ -62,7 +62,7 @@ describe('RepositoryList', () => {
 
       const { getAllByTestId } = render(<RepositoryListContainer repositories={repositories} />);
 
-      repoNodes = repositories.edges.map(edge => edge.node)
+      const repoNodes = repositories.edges.map(edge => edge.node);
 
       const allMatch = (index) => {
         expect(getAllByTestId('fullName')[index]).toHaveTextContent(repoNodes[index].fullName);
@@ -73,9 +73,9 @@ describe('RepositoryList', () => {
         expect(getAllByTestId('ForksValue')[index]).toHaveTextContent(convertToKSuffix(repoNodes[index].forksCount));
         expect(getAllByTestId('ReviewsValue')[index]).toHaveTextContent(convertToKSuffix(repoNodes[index].reviewCount));
         expect(getAllByTestId('RatingValue')[index]).toHaveTextContent(convertToKSuffix(repoNodes[index].ratingAverage));
-      }
+      };
 
-      for (i = 0; i < repoNodes.length; i++) {
+      for (var i = 0; i < repoNodes.length; i++) {
         allMatch(i);
       }
 

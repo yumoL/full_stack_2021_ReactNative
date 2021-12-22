@@ -8,6 +8,8 @@ const useRepositories = () => {
     // Other options
   });
 
+  //console.log("all loading", loading);
+
   return { repositories: data ? data.repositories : undefined, loading, error };
 };
 

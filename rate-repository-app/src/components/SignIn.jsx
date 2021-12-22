@@ -66,6 +66,6 @@ const SignIn = () => {
     }
   };
   return <SignInPage onSubmit={onSubmit} />;
-}
+};
 
 export default SignIn;

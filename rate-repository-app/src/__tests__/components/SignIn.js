@@ -8,7 +8,7 @@ describe('SignIn', () => {
       // render the SignInContainer component, fill the text inputs and press the submit button
       const name = 'jussi';
       const pwd = '12345';
-      const onSubmit = jest.fn()
+      const onSubmit = jest.fn();
       const { getByTestId } = render(<SignInPage onSubmit={onSubmit} />);
       fireEvent.changeText(getByTestId('usernameField'), name);
       fireEvent.changeText(getByTestId('passwordField'), pwd);
