@@ -39,10 +39,10 @@ const CardHeader = ({ fullName, description, language, ownerAvatarUrl }) => {
         <Image style={cardHeaderStyles.avatar} source={{ uri: ownerAvatarUrl }} />
       </View>
       <View style={cardHeaderStyles.infoContainer}>
-        <Text fontWeight="bold" fontSize="subheading">{fullName}</Text>
-        <Text color="secondary">{description}</Text>
+        <Text fontWeight="bold" fontSize="subheading" testID="fullName">{fullName}</Text>
+        <Text color="secondary" testID="description">{description}</Text>
         <View style={cardHeaderStyles.tagContainer}>
-          <Text color="bar">{language}</Text>
+          <Text color="bar" testID="language">{language}</Text>
         </View>
       </View>
     </View>
@@ -62,7 +62,7 @@ const NumberInfo = ({ fieldName, value }) => {
   return (
     <View>
       <View style={numberInfoStyles.container}>
-        <Text fontWeight="bold">{value}</Text>
+        <Text fontWeight="bold" testID={`${fieldName}Value`}>{value}</Text>
         <Text color="secondary">{fieldName}</Text>
       </View>
     </View>
@@ -92,7 +92,7 @@ const CardFooter = ({ stargazersCount, forksCount, reviewCount, ratingAverage })
 
   return (
     <View style={cardFooterStyles.container}>
-      <NumberInfo fieldName="Stars" value={convertToKSuffix(stargazersCount)} />
+      <NumberInfo fieldName="Stars" value={convertToKSuffix(stargazersCount)}/>
       <NumberInfo fieldName="Forks" value={convertToKSuffix(forksCount)} />
       <NumberInfo fieldName="Reviews" value={convertToKSuffix(reviewCount)} />
       <NumberInfo fieldName="Rating" value={convertToKSuffix(ratingAverage)} />
