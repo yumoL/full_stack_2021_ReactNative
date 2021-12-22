@@ -1,19 +1,8 @@
 import React from 'react';
-import { View, Pressable, StyleSheet, Button, Linking } from 'react-native';
+import { View, Pressable, Button, Linking } from 'react-native';
 import { useHistory } from "react-router-dom";
 import Card from './Card';
-
-const dividerStyles = StyleSheet.create({
-  container: {
-    height: 10,
-    backgroundColor: 'gray'
-  }
-});
-
-const Divider = () => {
-  return (<View style={dividerStyles.container}>
-  </View>);
-};
+import Divider from './Divider';
 
 const RepositoryItem = ({ id, fullName, description, language, stargazersCount, forksCount, reviewCount, ratingAverage, ownerAvatarUrl, url }) => {
   const history = useHistory();
@@ -44,13 +33,15 @@ const RepositoryItem = ({ id, fullName, description, language, stargazersCount, 
     );
   }
   return (
-    <View>
+    <View  style={{ marginBottom: 15 }}>
       <Card fullName={fullName}
         description={description} language={language} ownerAvatarUrl={ownerAvatarUrl}
         stargazersCount={stargazersCount} forksCount={forksCount}
         reviewCount={reviewCount} ratingAverage={ratingAverage}
       />
-      <Button title="Open in Github" onPress={() => onClickGithubButton(url)} />
+      <Button
+        title="Open in Github"
+        onPress={() => onClickGithubButton(url)} />
     </View>
   );
 };
