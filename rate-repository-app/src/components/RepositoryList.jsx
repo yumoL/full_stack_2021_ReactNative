@@ -1,24 +1,39 @@
-import React from 'react';
-import { FlatList, View, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { FlatList, View, Picker } from 'react-native';
+import { Searchbar } from 'react-native-paper';
+import { useDebounce } from 'use-debounce';
 import RepositoryItem from './RepositoryItem';
 import useRepositories from '../hooks/useRepositories';
+import Divider from './Divider';
 
-const styles = StyleSheet.create({
-  separator: {
-    height: 10,
-  },
-});
+export class RepositoryListContainer extends React.Component {
 
+  repositories = this.props.repositories;
 
-const ItemSeparator = () => <View style={styles.separator} />;
-
-export const RepositoryListContainer = ({ repositories }) => {
-
-  const repositoryNodes = repositories
-    ? repositories.edges.map(edge => edge.node)
+  repositoryNodes = this.repositories
+    ? this.repositories.edges.map(edge => edge.node)
     : [];
 
-  const renderItem = ({ item }) => {
+  renderHeader = () => {
+    return (
+      <View style={{ backgroundColor: '#F8F9F9' }}>
+        <Searchbar
+          placeholder='Searck by keyword...'
+          onChangeText={(text) => this.props.setSearchKeyword(text)}
+          value={this.props.searchKeyword} />
+        <Picker
+          selectedValue={this.props.criteria}
+          onValueChange={(itemValue) => this.props.setCriteria(itemValue)}
+        >
+          <Picker.Item label="Latest repositories" value="CREATED_AT,DESC" />
+          <Picker.Item label="Highest rated epositories" value="RATING_AVERAGE,DESC" />
+          <Picker.Item label="Lowest rated epositories" value="RATING_AVERAGE,ASC" />
+        </Picker>
+      </View>
+    );
+  };
+
+  renderItem = ({ item }) => {
     return (
       <RepositoryItem
         id={item.id}
@@ -33,22 +48,40 @@ export const RepositoryListContainer = ({ repositories }) => {
       />
     );
   };
-
-  return (
-    <FlatList
-      data={repositoryNodes}
-      ItemSeparatorComponent={ItemSeparator}
-      renderItem={renderItem}
-      keyExtractor={item => item.fullName}
-    // other props
-    />
-  );
-};
+  render() {
+    return (
+      <FlatList
+        data={this.repositoryNodes}
+        ItemSeparatorComponent={() => <Divider />}
+        renderItem={this.renderItem}
+        keyExtractor={item => item.fullName}
+        ListHeaderComponent={this.renderHeader}
+      // other props
+      />
+    );
+  }
+}
 
 const RepositoryList = () => {
-  const { repositories, loading } = useRepositories();
+  const [criteria, setCriteria] = useState('CREATED_AT,DESC');
+  const [searchKeyword, setSearchKeyword] = useState('');
+  const [debouncedKeyword] = useDebounce(searchKeyword, 500);
+
+  const { repositories, loading } = useRepositories(
+    {
+      orderBy: criteria.split(',')[0],
+      orderDirection: criteria.split(',')[1],
+      searchKeyword: debouncedKeyword
+    });
+
   if (loading) return null;
-  return <RepositoryListContainer repositories={repositories} />;
+
+  return (
+    <View>
+      <RepositoryListContainer repositories={repositories}
+        criteria={criteria} setCriteria={setCriteria} searchKeyword={searchKeyword} setSearchKeyword={setSearchKeyword} />
+    </View>
+  );
 };
 
 export default RepositoryList;

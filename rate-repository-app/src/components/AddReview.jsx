@@ -1,32 +1,20 @@
 import React from 'react';
-import { View, StyleSheet, Pressable } from 'react-native';
+import { View, Pressable } from 'react-native';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import Text from './Text';
 import FormikTextInput from './FormikTextInput';
 import useAddReview from '../hooks/useAddReview';
-import theme from './Theme';
+import { formStyles } from './Theme';
 
 const AddReviewForm = ({ onSubmit }) => {
-  const styles = StyleSheet.create({
-    submitButton: {
-      backgroundColor: theme.colors.fieldColor,
-      padding: 10,
-      margin: 15,
-      height: 40,
-      textAlign: 'center'
-    },
-    submitButtonText: {
-      color: 'white'
-    }
-  });
   return (
     <View>
       <FormikTextInput name="ownerName" placeholder="Repository owner name" />
       <FormikTextInput name="repositoryName" placeholder="Repository name" />
       <FormikTextInput name="rating" placeholder="Rating between 0 and 100" />
       <FormikTextInput name="text" placeholder="Review" multiline={true} />
-      <Pressable onPress={onSubmit} style={styles.submitButton} testID="submitButton">
+      <Pressable onPress={onSubmit} style={formStyles.submitButton} testID="submitButton">
         <Text color="bar" style={{ textAlign: 'center' }}>Create a review</Text>
       </Pressable>
     </View>
@@ -45,7 +33,7 @@ const AddReviewPage = ({ onSubmit }) => {
       .number()
       .typeError('You must specify a number')
       .min(0, 'Minimum rating is 0')
-      .min(100, 'Maximum rating is 100')
+      .max(100, 'Maximum rating is 100')
       .required('Rating is required')
   });
 

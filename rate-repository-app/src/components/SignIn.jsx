@@ -1,29 +1,18 @@
 import React from 'react';
-import { View, Pressable, StyleSheet } from 'react-native';
+import { View, Pressable } from 'react-native';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import FormikTextInput from './FormikTextInput';
 import Text from './Text';
 import useSignIn from '../hooks/useSignIn';
-import theme from './Theme';
+import { formStyles } from './Theme';
 
 const SignInForm = ({ onSubmit }) => {
-  const styles = StyleSheet.create({
-    submitButton: {
-      backgroundColor: theme.colors.fieldColor,
-      padding: 10,
-      margin: 15,
-      height: 40,
-    },
-    submitButtonText: {
-      color: 'white'
-    }
-  });
   return (
     <View>
       <FormikTextInput name="username" placeholder="username" testID="usernameField" />
       <FormikTextInput secureTextEntry={true} name="password" placeholder="password" testID="passwordField" />
-      <Pressable onPress={onSubmit} style={styles.submitButton} testID="submitButton">
+      <Pressable onPress={onSubmit} style={formStyles.submitButton} testID="submitButton">
         <Text color="bar" style={{ textAlign: 'center' }}>Sign In</Text>
       </Pressable>
     </View>

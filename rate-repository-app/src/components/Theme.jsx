@@ -1,4 +1,4 @@
-import { Platform } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 
 const theme = {
   colors: {
@@ -32,5 +32,17 @@ const theme = {
   },
 
 };
+
+export const formStyles = StyleSheet.create({
+  submitButton: {
+    backgroundColor: theme.colors.fieldColor,
+    padding: 10,
+    margin: 15,
+    height: 40,
+  },
+  submitButtonText: {
+    color: 'white'
+  }
+});
 
 export default theme;
