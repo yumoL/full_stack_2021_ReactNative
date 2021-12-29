@@ -26,9 +26,9 @@ const styles = StyleSheet.create({
 });
 
 const AppBar = () => {
-  const {authUser} = useAuthUser();
+  const { authUser } = useAuthUser({ includeReviews: false });
   const [signOut] = useSignOut();
-  
+
   return (
     <View style={styles.container}>
       <ScrollView horizontal style={styles.barContainer}>
@@ -43,19 +43,22 @@ const AppBar = () => {
             <Link to="/review">
               <Text style={styles.text}>Create a review</Text>
             </Link>
+            <Link to="/myreview">
+              <Text style={styles.text}>My reviews</Text>
+            </Link>
             <Text style={styles.text}>{authUser.username}</Text>
           </>
           :
           <>
-          <Link to="/signin">
-            <Text style={styles.text}>Sign in</Text>
-          </Link>
-          <Link to="/signup">
-            <Text style={styles.text}>Sign up</Text>
-          </Link>
+            <Link to="/signin">
+              <Text style={styles.text}>Sign in</Text>
+            </Link>
+            <Link to="/signup">
+              <Text style={styles.text}>Sign up</Text>
+            </Link>
           </>
-          
-          
+
+
         }
       </ScrollView>
 
